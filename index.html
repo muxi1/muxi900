@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MUXI900 v3</title>
+    <script src="./bundle.js"></script>
+	<style>
+    body{background-color:black;
+    color:white;font-size:25px;text-align:center;margin:0;overflow:hidden;}
+    </style>
+<br><br>
+<img class="colelem" id="pic" alt="&nbsp;MUXI900" src="pic.png" data-image-width="852"/>
+<br><br><br><br>
+    <script>
+      if ((window.applicationCache.status == '0') || (window.applicationCache.status == '3')) { // 0: UNCACHED, 3: IDLE
+        window.location.replace("cache.html");
+      }
+    </script>
+  </head>
+  <body>
+        <div>
+      <button id="jailbreakBtn">Starte Jailbreak</button>
+    </div>
+    <pre id="console"></pre>
+  </body>
+  <script>
+    // Logging utility
+    const outputConsole = document.getElementById("console");
+    window.log = (msg) => { outputConsole.textContent += msg + "\n"; };
+    // Event definitions
+    addEventListener('unhandledrejection', event => {
+      const reason = event.reason;
+      alert(
+        'Unhandled rejection\n'
+        + `${reason}\n`
+        + `${reason.sourceURL}:${reason.line}:${reason.column}\n`
+        + `${reason.stack}`
+      );
+    });
+    addEventListener('error', event => {
+      const reason = event.error;
+      alert(
+        'Unhandled error\n'
+        + `${reason}\n`
+        + `${reason.sourceURL}:${reason.line}:${reason.column}\n`
+        + `${reason.stack}`
+      );
+      return true; // Used for not to show error message on console
+    });
+    // Button click
+    document.getElementById("jailbreakBtn").addEventListener("click", () => {
+      // Disable to prevent double click
+      document.getElementById("jailbreakBtn").disabled = true;
+      outputConsole.textContent = ""; // Clear console log
+      try {
+        doJBwithPSFreeLapseExploit();
+      } catch (error) {
+        window.log("Ein Fehler trat auf waehrend des exploitens: " + error);
+      }
+    });
+  </script>
+</html>

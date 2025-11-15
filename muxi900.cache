@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+aio_patches.bin
+cache.html
+index.html
+bundle.js
+bundle_reference.js
+payload.bin
+pic.png
+
+NETWORK:
+*
